@@ -12,8 +12,6 @@ the selected location.
 
 ## Getting Started 🚀
 
-
-
 1. To run the project run the following command to generate files:
 
 ```sh
@@ -26,7 +24,6 @@ $ dart run build_runner build --delete-conflicting-outputs
 ```
 
 2. Rename .env.template to .env and set your openWeatherKey api in this key WEATHER_API_KEY
-
 
 ## Running Tests 🧪
 
@@ -99,21 +96,22 @@ open coverage/html/index.html
 ### Data layer:
 - Contains the entity classes that represent the data of the problem domain.
 - Also contains the repositories that provide access to the data.
-- 
+
 ### Domain layer:
 - Contains the use case classes that represent the operations that can be performed on the problem domain.
 
 ### Presentation layer:
 - Contains the widgets that are displayed in the user interface.
+
 ### ViewModel:
 - Connects the presentation layer with the domain layer.
 - Gets the data from the repository and exposes it to the presentation layer.
-- 
+
 ### Additional explanation:
 - The project architecture follows the MVVM (Model-View-ViewModel)  pattern.
 - This pattern separates the UI logic from the domain logic.
 - This makes the project easier to maintain and test.
-- 
+
 ### Benefits of this structure:
 - Modularity: The layers are decoupled from each other, which makes it easier to maintain and reuse code.
 - Testability: Each layer can be tested independently, which makes it easier to detect and fix bugs.
@@ -126,7 +124,7 @@ open coverage/html/index.html
 ### Core layer:
 - Contains utility classes and functions that are used throughout the application.
 - This can include things like data models, constants, and helper functions.
-- 
+  
 ### Explanation:
 - The networking layer and core layer are both considered to be cross-cutting concerns.
 - This means that they are used by multiple other layers in the application.
