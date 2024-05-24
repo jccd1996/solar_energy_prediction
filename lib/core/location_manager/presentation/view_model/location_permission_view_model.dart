@@ -10,10 +10,10 @@ final locationPermissionViewModelProvider =
 class LocationNotifier extends AsyncNotifier<PermissionStatus> {
   @override
   Future<PermissionStatus> build() async {
-    return await _checkPermissionStatus();
+    return await checkPermissionStatus();
   }
 
-  Future<PermissionStatus> _checkPermissionStatus() async {
+  Future<PermissionStatus> checkPermissionStatus() async {
     var status = await ref
         .read(permissionManagerUseCaseProvider)
         .requestLocationPermission();

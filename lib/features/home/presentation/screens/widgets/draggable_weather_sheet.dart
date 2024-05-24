@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:solar_energy_prediction/core/extensions/app_context_extension.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/current_weather/current_weather_info.dart';
+import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/error_template.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/five_day_forecast/five_day_weather_info.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/sliver_loader.dart';
 import 'package:solar_energy_prediction/features/home/presentation/view_models/selected_location_current_weather_view_model.dart';
 import 'package:solar_energy_prediction/features/home/presentation/view_models/selected_location_five_day_weather_view_model.dart';
+import 'package:solar_energy_prediction/networking/data_source/api_exception.dart';
 import 'package:solar_energy_prediction/networking/data_source/api_response.dart';
 
 class DraggableWeatherSheet extends ConsumerWidget {
@@ -31,9 +34,9 @@ class DraggableWeatherSheet extends ConsumerWidget {
       snap: true,
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+          decoration: BoxDecoration(
+            color: context.colorsScheme.onPrimary,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: CustomScrollView(
             controller: scrollController,
@@ -65,11 +68,11 @@ class DraggableWeatherSheet extends ConsumerWidget {
                     );
                   },
                   error: (e, _) {
-                    final exception = e as ErrorApiResponse;
                     return SliverToBoxAdapter(
-                      child: Container(
-                        color: Colors.white,
-                        child: Text(e.httpErrorMessage),
+                      child: ErrorTemplate(
+                        message: e is ErrorApiResponse
+                            ? e.apiResponseException.getMessage(context)
+                            : context.l10n.unknownError,
                       ),
                     );
                   },
@@ -84,11 +87,11 @@ class DraggableWeatherSheet extends ConsumerWidget {
                     );
                   },
                   error: (e, _) {
-                    final exception = e as ErrorApiResponse;
                     return SliverToBoxAdapter(
-                      child: Container(
-                        color: Colors.white,
-                        child: Text(e.httpErrorMessage),
+                      child: ErrorTemplate(
+                        message: e is ErrorApiResponse
+                            ? e.apiResponseException.getMessage(context)
+                            : context.l10n.unknownError,
                       ),
                     );
                   },

@@ -1,0 +1,13 @@
+{
+  "timeoutError": "The connection has timed out",
+  "badResponseError": "¡Oops!, That's an error",
+  "connectionError": "Verify your internet connection and try again later",
+  "unknownError": "Something went wrong, try again later :(",
+  "max": "max",
+  "min": "min",
+  "fiveDAyWeatherForecastByDay": "5-day weather forecast by day",
+  "fiveDAyWeatherForecastByHours": "5-day weather forecast by hours",
+  "toOfferABetterExperienceInfo": "To offer a better user experience, allow us to access the location of the device and enjoy all the weather information.",
+  "requestLocation": "Request device location",
+  "continueApp": "Continue"
+}

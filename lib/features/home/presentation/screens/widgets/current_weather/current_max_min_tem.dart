@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solar_energy_prediction/core/extensions/app_context_extension.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_info_entity.dart';
 
 class CurrentMaxMinTemInfo extends StatelessWidget {
@@ -19,7 +20,7 @@ class CurrentMaxMinTemInfo extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  'max',
+                  context.l10n.max,
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
@@ -36,13 +37,12 @@ class CurrentMaxMinTemInfo extends StatelessWidget {
               child: VerticalDivider(
                 width: 10,
                 thickness: 2,
-                color: Colors.black,
               ),
             ),
             Column(
               children: [
                 Text(
-                  'min',
+                  context.l10n.min,
                   style: Theme.of(context).textTheme.titleMedium,
                   textAlign: TextAlign.center,
                 ),
