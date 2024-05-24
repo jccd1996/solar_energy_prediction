@@ -25,8 +25,8 @@ class FiveDayWeatherInfo extends StatelessWidget {
                 children: [
                   Text(weatherByHourItem.time),
                   CachedNetworkImage(
-                    height: 50,
-                    width: 50,
+                    height: 40,
+                    width: 40,
                     fit: BoxFit.contain,
                     imageUrl: weatherByHourItem.iconUrl,
                   ),
@@ -45,7 +45,7 @@ class FiveDayWeatherInfo extends StatelessWidget {
             final weatherByDayItem =
                 fiveDayInfo.weatherFiveDayAverageByDay[index];
             return SizedBox(
-              width: 100,
+              width: 110,
               child: Column(
                 children: [
                   Text(weatherByDayItem.date),
@@ -55,25 +55,29 @@ class FiveDayWeatherInfo extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Column(
-                        children: [
-                          Text(context.l10n.max),
-                          Text(weatherByDayItem.maxTemp),
-                        ],
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(context.l10n.max),
+                            Text(weatherByDayItem.maxTemp),
+                          ],
+                        ),
                       ),
                       const SizedBox(
                         height: 30.0,
-                        width: 10.0,
+                        width: 1.0,
                         child: VerticalDivider(
                           width: 1,
                           thickness: 1,
                         ),
                       ),
-                      Column(
-                        children: [
-                          Text(context.l10n.min),
-                          Text(weatherByDayItem.minTemp),
-                        ],
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Text(context.l10n.min),
+                            Text(weatherByDayItem.minTemp),
+                          ],
+                        ),
                       ),
                     ],
                   ),

@@ -3,6 +3,7 @@ import 'package:solar_energy_prediction/features/home/data/models/coord_response
 part 'city_response.freezed.dart';
 
 part 'city_response.g.dart';
+
 @freezed
 class CityResponse with _$CityResponse {
   const factory CityResponse({
@@ -14,5 +15,6 @@ class CityResponse with _$CityResponse {
     required int timezone,
   }) = _CityResponse;
 
-  factory CityResponse.fromJson(Map<String, dynamic> json) => _$CityResponseFromJson(json);
+  factory CityResponse.fromJson(Map<String, dynamic> json) =>
+      _$CityResponseFromJson(json);
 }

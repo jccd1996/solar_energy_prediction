@@ -1,8 +1,8 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
+import 'package:solar_energy_prediction/core/location_manager/presentation/view_model/current_location_view_model.dart';
 import 'package:solar_energy_prediction/core/theme/google_map_theme.dart';
 import 'package:solar_energy_prediction/core/theme/theme_provider.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/draggable_weather_sheet.dart';
@@ -22,11 +22,8 @@ class HomeMapScreenState extends ConsumerState<HomeScreen> {
   final DraggableScrollableController draggableScrollableController =
       DraggableScrollableController();
 
-  final Completer<GoogleMapController> _controller =
-      Completer<GoogleMapController>();
-
   static const CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(37.42, -122.08),
     zoom: 14.4746,
   );
 
@@ -34,17 +31,18 @@ class HomeMapScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final selectedMarker = ref.watch(markerProvider);
     final isLight = ref.watch(themeModeProvider) == ThemeMode.light;
+    final currentLocation = ref.watch(currentLocationViewModelProvider);
     return Scaffold(
+      key: const Key('home_screen'),
       body: Stack(
         children: [
           GoogleMap(
+            key: const Key('google_map_section'),
             myLocationButtonEnabled: true,
             myLocationEnabled: true,
             style:
                 isLight ? GoogleMapTheme.lightStyle : GoogleMapTheme.darkStyle,
-            initialCameraPosition: _kGooglePlex,
-            onMapCreated: (GoogleMapController controller) =>
-                _controller.complete(controller),
+            initialCameraPosition: handleCurrentLocation(currentLocation),
             onTap: (LatLng location) => _handleOnTap(selectedMarker, location),
             markers: selectedMarker != null ? {selectedMarker} : {},
             padding: EdgeInsets.only(
@@ -53,14 +51,29 @@ class HomeMapScreenState extends ConsumerState<HomeScreen> {
           ),
           const Align(
             alignment: Alignment.topRight,
-            child: ThemeButton(),
+            child: ThemeButton(
+              key: Key('home_theme_button'),
+            ),
           ),
           DraggableWeatherSheet(
+            key: const Key('draggable_weather'),
             draggableScrollableController: draggableScrollableController,
           ),
         ],
       ),
     );
+  }
+
+  CameraPosition handleCurrentLocation(AsyncValue<LocationData?> locationData) {
+    return locationData.when(
+        data: (location) {
+          return CameraPosition(
+            target: LatLng(location!.latitude!, location.longitude!),
+            zoom: 15.0,
+          );
+        },
+        error: (_, __) => _kGooglePlex,
+        loading: () => _kGooglePlex);
   }
 
   void _handleOnTap(Marker? selectedMarker, LatLng location) {

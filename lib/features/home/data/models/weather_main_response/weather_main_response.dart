@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'weather_main_response.freezed.dart';
 
 part 'weather_main_response.g.dart';
+
 @freezed
 class WeatherMainResponse with _$WeatherMainResponse {
   const factory WeatherMainResponse({
@@ -10,5 +11,6 @@ class WeatherMainResponse with _$WeatherMainResponse {
     @JsonKey(name: 'temp_max') required double tempMax,
   }) = _WeatherMainResponse;
 
-  factory WeatherMainResponse.fromJson(Map<String, dynamic> json) => _$WeatherMainResponseFromJson(json);
+  factory WeatherMainResponse.fromJson(Map<String, dynamic> json) =>
+      _$WeatherMainResponseFromJson(json);
 }

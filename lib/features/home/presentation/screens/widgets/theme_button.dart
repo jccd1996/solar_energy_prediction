@@ -21,6 +21,7 @@ class ThemeButton extends ConsumerWidget {
           borderRadius: BorderRadius.circular(4),
         ),
         child: IconButton(
+          key: const Key('theme_button_on_tap'),
           onPressed: () {
             ref.read(themeModeProvider.notifier).state =
                 isLight ? ThemeMode.dark : ThemeMode.light;
