@@ -3,7 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:solar_energy_prediction/core/theme/google_map_theme.dart';
+import 'package:solar_energy_prediction/core/theme/theme_provider.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/draggable_weather_sheet.dart';
+import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/theme_button.dart';
 import 'package:solar_energy_prediction/features/home/presentation/view_models/marker_provider.dart';
 import 'package:solar_energy_prediction/features/home/presentation/view_models/selected_location_current_weather_view_model.dart';
 import 'package:solar_energy_prediction/features/home/presentation/view_models/selected_location_five_day_weather_view_model.dart';
@@ -30,18 +33,27 @@ class HomeMapScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final selectedMarker = ref.watch(markerProvider);
+    final isLight = ref.watch(themeModeProvider) == ThemeMode.light;
     return Scaffold(
       body: Stack(
         children: [
           GoogleMap(
             myLocationButtonEnabled: true,
             myLocationEnabled: true,
-            mapType: MapType.hybrid,
+            style:
+                isLight ? GoogleMapTheme.lightStyle : GoogleMapTheme.darkStyle,
             initialCameraPosition: _kGooglePlex,
             onMapCreated: (GoogleMapController controller) =>
                 _controller.complete(controller),
             onTap: (LatLng location) => _handleOnTap(selectedMarker, location),
             markers: selectedMarker != null ? {selectedMarker} : {},
+            padding: EdgeInsets.only(
+              top: MediaQuery.of(context).viewPadding.top + 12,
+            ),
+          ),
+          const Align(
+            alignment: Alignment.topRight,
+            child: ThemeButton(),
           ),
           DraggableWeatherSheet(
             draggableScrollableController: draggableScrollableController,

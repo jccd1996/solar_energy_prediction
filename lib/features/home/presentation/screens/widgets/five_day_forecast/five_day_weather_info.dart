@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:solar_energy_prediction/core/extensions/app_context_extension.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_info_entity.dart';
 import 'package:solar_energy_prediction/features/home/presentation/screens/widgets/five_day_forecast/forecast_section.dart';
 
@@ -14,7 +15,7 @@ class FiveDayWeatherInfo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ForecastSection(
-          title: '5-day weather forecast by hours',
+          title: context.l10n.fiveDAyWeatherForecastByHours,
           length: fiveDayInfo.weatherFiveDayByHour.length,
           itemBuilder: (context, index) {
             final weatherByHourItem = fiveDayInfo.weatherFiveDayByHour[index];
@@ -37,7 +38,7 @@ class FiveDayWeatherInfo extends StatelessWidget {
         ),
         const Divider(height: 24.0),
         ForecastSection(
-          title: '5-day weather forecast by day',
+          title: context.l10n.fiveDAyWeatherForecastByDay,
           length: fiveDayInfo.weatherFiveDayAverageByDay.length,
           height: 120,
           itemBuilder: (context, index) {
@@ -56,7 +57,7 @@ class FiveDayWeatherInfo extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          const Text('max'),
+                          Text(context.l10n.max),
                           Text(weatherByDayItem.maxTemp),
                         ],
                       ),
@@ -66,12 +67,11 @@ class FiveDayWeatherInfo extends StatelessWidget {
                         child: VerticalDivider(
                           width: 1,
                           thickness: 1,
-                          color: Colors.black,
                         ),
                       ),
                       Column(
                         children: [
-                          const Text('min'),
+                          Text(context.l10n.min),
                           Text(weatherByDayItem.minTemp),
                         ],
                       ),
