@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_by_hour_entity.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_info_entity.dart';
-import 'package:solar_energy_prediction/features/home/domain/entities/weather_info_entity.dart';
 import 'package:solar_energy_prediction/features/home/domain/use_case/weather_use_case_provider.dart';
 
 final selectedLocationFiveDayWeatherViewModelProvider = AsyncNotifierProvider<
@@ -22,7 +20,7 @@ class SelectedLocationFiveDayWeatherViewModel
     state = const AsyncValue.loading();
     try {
       final weather =
-          await ref.read(weatherUseCaseProvider).getWeatherFiveDayByHour(
+          await ref.read(weatherUseCaseProvider).getWeatherFiveForecast(
                 lat: lat,
                 lon: lon,
               );

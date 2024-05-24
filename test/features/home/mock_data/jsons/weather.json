@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": -75.1852,
+    "lat": 4.4472
+  },
+  "weather": [
+    {
+      "id": 804,
+      "main": "Clouds",
+      "description": "overcast clouds",
+      "icon": "04n"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 16.26,
+    "feels_like": 16.27,
+    "temp_min": 16.26,
+    "temp_max": 16.26,
+    "pressure": 1016,
+    "humidity": 89,
+    "sea_level": 1016,
+    "grnd_level": 840
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 3.04,
+    "deg": 325,
+    "gust": 2.08
+  },
+  "clouds": {
+    "all": 100
+  },
+  "dt": 1716528630,
+  "sys": {
+    "country": "CO",
+    "sunrise": 1716547646,
+    "sunset": 1716592090
+  },
+  "timezone": -18000,
+  "id": 3680656,
+  "name": "Ibagué",
+  "cod": 200
+}

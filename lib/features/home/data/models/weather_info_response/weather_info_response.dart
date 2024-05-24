@@ -20,4 +20,3 @@ class WeatherInfoResponse with _$WeatherInfoResponse {
   factory WeatherInfoResponse.fromJson(Map<String, Object?> json) =>
       _$WeatherInfoResponseFromJson(json);
 }
-

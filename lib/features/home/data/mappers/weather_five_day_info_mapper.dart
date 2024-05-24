@@ -1,15 +1,12 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:solar_energy_prediction/core/base/base_mapper.dart';
 import 'package:solar_energy_prediction/core/constants/enviroment_values.dart';
 import 'package:solar_energy_prediction/core/constants/weather_constants.dart';
 import 'package:solar_energy_prediction/core/extensions/string_extension.dart';
 import 'package:solar_energy_prediction/features/home/data/models/weather_five_day_response/weather_five_day_response.dart';
-import 'package:solar_energy_prediction/features/home/data/models/weather_info_response/weather_info_response.dart';
 import 'package:solar_energy_prediction/features/home/data/models/weather_list_response/weather_list_response.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_average_by_day_entity.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_by_hour_entity.dart';
 import 'package:solar_energy_prediction/features/home/domain/entities/weather_five_day_info_entity.dart';
-import 'package:solar_energy_prediction/features/home/domain/entities/weather_info_entity.dart';
 
 class WeatherFiveDayInfoMapper
     with BaseResponseMapper<WeatherFiveDayInfoEntity, WeatherFiveDayResponse> {

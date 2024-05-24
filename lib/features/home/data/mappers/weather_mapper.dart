@@ -1,4 +1,3 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:solar_energy_prediction/core/base/base_mapper.dart';
 import 'package:solar_energy_prediction/core/constants/enviroment_values.dart';
 import 'package:solar_energy_prediction/core/constants/weather_constants.dart';

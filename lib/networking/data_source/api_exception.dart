@@ -9,16 +9,16 @@ enum ApiResponseException {
 }
 
 extension ApiResponseExceptionExtension on ApiResponseException {
-String getMessage(BuildContext context) {
-  switch (this) {
-    case ApiResponseException.timeOut:
-      return context.l10n.timeoutError;
-    case ApiResponseException.badResponse:
-      return context.l10n.badResponseError;
-    case ApiResponseException.connectionError:
-      return context.l10n.connectionError;
-    case ApiResponseException.unknown:
-      return context.l10n.unknownError;
+  String getMessage(BuildContext context) {
+    switch (this) {
+      case ApiResponseException.timeOut:
+        return context.l10n.timeoutError;
+      case ApiResponseException.badResponse:
+        return context.l10n.badResponseError;
+      case ApiResponseException.connectionError:
+        return context.l10n.connectionError;
+      case ApiResponseException.unknown:
+        return context.l10n.unknownError;
+    }
   }
-}
 }

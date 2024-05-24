@@ -4,6 +4,7 @@ import 'package:solar_energy_prediction/features/home/data/models/weather_list_r
 part 'weather_five_day_response.freezed.dart';
 
 part 'weather_five_day_response.g.dart';
+
 @freezed
 class WeatherFiveDayResponse with _$WeatherFiveDayResponse {
   const factory WeatherFiveDayResponse({
@@ -14,5 +15,6 @@ class WeatherFiveDayResponse with _$WeatherFiveDayResponse {
     required CityResponse city,
   }) = _WeatherFiveDayResponse;
 
-  factory WeatherFiveDayResponse.fromJson(Map<String, dynamic> json) => _$WeatherFiveDayResponseFromJson(json);
+  factory WeatherFiveDayResponse.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFiveDayResponseFromJson(json);
 }

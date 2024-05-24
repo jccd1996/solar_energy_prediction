@@ -9,7 +9,12 @@ class LocationManagerRepositoryImpl implements LocationManagerRepository {
   LocationManagerRepositoryImpl(this.localSource);
 
   @override
-  Future<PermissionStatus> requestLocationPermission() async {
-    return await localSource.requestLocationPermission();
+  Future<PermissionStatus> requestLocationPermission() {
+    return localSource.requestLocationPermission();
+  }
+
+  @override
+  Future<LocationData> getCurrentLocation() {
+    return localSource.getCurrentLocation();
   }
 }

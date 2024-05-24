@@ -3,6 +3,7 @@ import 'package:solar_energy_prediction/core/location_manager/domain/repository/
 
 abstract interface class LocationManagerUseCase {
   Future<PermissionStatus> requestLocationPermission();
+  Future<LocationData> getCurrentLocation();
 }
 
 class LocationManagerUseCaseImpl implements LocationManagerUseCase {
@@ -12,6 +13,11 @@ class LocationManagerUseCaseImpl implements LocationManagerUseCase {
 
   @override
   Future<PermissionStatus> requestLocationPermission() async {
-    return await repository.requestLocationPermission();
+    return repository.requestLocationPermission();
+  }
+
+  @override
+  Future<LocationData> getCurrentLocation() {
+    return repository.getCurrentLocation();
   }
 }

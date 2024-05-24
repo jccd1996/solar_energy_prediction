@@ -4,6 +4,7 @@ import 'package:solar_energy_prediction/features/home/data/models/weather_five_d
 import 'package:solar_energy_prediction/features/home/data/models/weather_info_response/weather_info_response.dart';
 
 part 'weather_service.g.dart';
+
 @RestApi()
 abstract class WeatherService {
   factory WeatherService(Dio dio) = _WeatherService;
